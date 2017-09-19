@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Textbook == Board
 class Textbook(models.Model):
-    isbn = models.IntegerField(max_length=13, primary_key=True, unique=True)
+    isbn = models.IntegerField(primary_key=True, unique=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     date_published = models.DateField()
@@ -13,7 +13,7 @@ class Textbook(models.Model):
 
 
 class Page(models.Model):
-    page_number = models.IntegerField(max_length=4, primary_key=True, unique=True)
+    page_number = models.IntegerField(primary_key=True, unique=True)
     # a Textbook takes multiple Pages, but a Page has only one Textbook
     textbook = models.ForeignKey(Textbook, related_name='pages')
 
@@ -34,7 +34,7 @@ class Exercise(models.Model):
 
 # Solution == Post
 class Solution(models.Model):
-    solution = models.CharField()
+    solution = models.TextField(max_length=4000)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True)
     # Relational
