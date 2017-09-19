@@ -11,6 +11,9 @@ class Textbook(models.Model):
     description = models.CharField(max_length=200)
     photo_url = models.CharField(max_length=200, blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Page(models.Model):
     page_number = models.IntegerField(primary_key=True, unique=True)
