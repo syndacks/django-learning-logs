@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Textbooks</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active">Textbooks</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Section</th>
+            <th>Type</th>
+            <th>Page</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{ textbook.author }}
+              <small class="text-muted d-block">{{ textbook.description }}</small>
+            </td>
+            <td><small>{{ textbook.photo_url }}</small></td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

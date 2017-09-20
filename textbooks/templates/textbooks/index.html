@@ -26,10 +26,10 @@
           {% for textbook in textbooks %}
             <tr>
               <td>
-                {{ textbook.title }}
+                <a href="{% url 'textbooks:textbook_detail' textbook.isbn %}">{{ textbook.title }}</a>
                 <small class="text-muted d-block">{{ textbook.description }}</small>
               </td>
-              <td><small>{{textbook.isbn}}</small></td>
+              <td><small>{{ textbook.isbn }}</small></td>
               <td class="align-middle">0</td>
               <td class="align-middle">0</td>
               <td></td>
