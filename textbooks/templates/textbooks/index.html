@@ -1,19 +1,42 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Textbooks</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   </head>
   <body>
-    <h1>Welcome to Slader.com/textbooks</h1>
-
-    <p>Here are the textbook you currently have:</p>
-
-    <ul>
-      {% for textbook in textbooks %}
-        <li>{{textbook.title}}</li>
-      {% endfor %}
-    <ul>
-
+    <div class="container">
+      <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active">Textbooks</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Textbook</th>
+            <th>ISBN</th>
+            <th>Posts</th>
+            <th>Topics</th>
+            <th>Last Post</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for textbook in textbooks %}
+            <tr>
+              <td>
+                {{ textbook.title }}
+                <small class="text-muted d-block">{{ textbook.description }}</small>
+              </td>
+              <td><small>{{textbook.isbn}}</small></td>
+              <td class="align-middle">0</td>
+              <td class="align-middle">0</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
