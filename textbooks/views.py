@@ -3,6 +3,10 @@ from django.http import HttpResponse
 
 from .models import Textbook
 
+def index(request):
+    return render(request, 'textbooks/header.html')
+
+    
 def home(request):
     textbooks = Textbook.objects.all()
     textbooks_names = list()
