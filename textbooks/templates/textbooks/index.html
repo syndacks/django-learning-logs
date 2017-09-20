@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome to Slader.com/textbooks</h1>
+
+    <p>Here are the textbook you currently have:</p>
+
+    <ul>
+      {% for textbook in textbooks %}
+        <li>{{textbook.title}}</li>
+      {% endfor %}
+    <ul>
+
+  </body>
+</html>

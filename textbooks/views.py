@@ -3,16 +3,11 @@ from django.http import HttpResponse
 
 from .models import Textbook
 
+
+def about(request):
+    return render(request, 'textbooks/about.html')
+
+
 def index(request):
-    return render(request, 'textbooks/header.html')
-
-    
-def home(request):
     textbooks = Textbook.objects.all()
-    textbooks_names = list()
-
-    for textbook in textbooks:
-        textbooks_names.append(textbook.title)
-
-    response_html = '<br>'.join(textbooks_names)
-    return HttpResponse(response_html)
+    return render(request, 'textbooks/index.html', {'textbooks': textbooks})

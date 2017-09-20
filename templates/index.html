@@ -8,6 +8,15 @@
 
 <body class="body" style="background-color:#f6f6f6">
 	<div>
+		<h1>
+			Welcome to Slader_Clone
+		</h1>
+
+		<ul>
+			<li><a href="{% url 'textbooks:index' %}">Textbooks</a></li>
+			<li><a href="{% url 'textbooks:about' %}">About me</li>
+		</ul>
+
 	   {% block content %}
 	   {% endblock %}
 	</div>
