@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>Textbooks</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/textbook-index.css' %}">
   </head>
   <body>
     <div class="container">
@@ -20,6 +21,7 @@
             <th>Posts</th>
             <th>Topics</th>
             <th>Last Post</th>
+            <th>Book Image</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +35,7 @@
               <td class="align-middle">0</td>
               <td class="align-middle">0</td>
               <td></td>
+              <td><img class="book-image" src="{{textbook.photo_url}}" alt=""></td>
             </tr>
           {% endfor %}
         </tbody>
