@@ -1,17 +1,19 @@
-{% load static %}
+{% extends "textbooks/base.html" %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Textbooks</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  </head>
-  <body>
+{% block content %}
     <div class="container">
       <ol class="breadcrumb my-4">
-        <li class="breadcrumb-item active">Textbooks</li>
+        <li class="breadcrumb-item active">{{textbook.title}} - {{textbook.isbn}}</li>
+        <br/>
+        <li class="breadcrumb-item active"><em>{{textbook.author}}</em></li>
       </ol>
+
+      <div class>
+          <img class="book-image" src="{{textbook.photo_url}}">
+          <br/>
+          <br/>
+      </div>
+
       <table class="table">
         <thead class="thead-inverse">
           <tr>
@@ -35,4 +37,4 @@
       </table>
     </div>
   </body>
-</html>
+{% endblock %}
