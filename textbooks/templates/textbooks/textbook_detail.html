@@ -20,41 +20,38 @@
         <a href="{% url 'textbooks:new_exercise' textbook.pk %}" class="btn btn-primary">New exercise</a>
       </div>
 
-      <table class="table">
-        <!-- code suppressed for brevity -->
-      </table>
+
 
 
       <table class="table">
         <thead class="thead-inverse">
           <tr>
-            <th>Section</th>
-            <th>Type</th>
-            <th>Page</th>
+            <th>Page Number</th>
+            <th>Exercise Number</th>
+            <th>Starter</th>
+            <th>Posts</th>
+            <th>Last Update</th>
           </tr>
         </thead>
         <tbody>
+
+
+        {% for exercise in textbook.exercises.all|dictsort:'page_number' %}
           <tr>
-            <td>
-              {{ textbook.author }}
-              <small class="text-muted d-block">{{ textbook.description }}</small>
-            </td>
-            <td><small>{{ textbook.photo_url }}</small></td>
-            <td class="align-middle"></td>
-            <td class="align-middle"></td>
-            <td></td>
+            <td>{{ exercise.page_number }}</td>
+            <td>{{ exercise.exercise_number }}</td>
+            <td>{{ exercise.starter }}</td>
+            <td>0</td>
+            <td>{{ exercise.last_updated }}</td>
           </tr>
-          {% for exercise in textbook.exercises.all %}
-            <tr>
-              <td>{{ exercise.exercise_number }}</td>
-              <td>{{ exercise.page_number }}</td>
-              <td>0</td>
-              <td>0</td>
-              <td>{{ exercise.last_updated }}</td>
-            </tr>
-          {% endfor %}
+        {% endfor %}
+
         </tbody>
       </table>
+
+
+
+
     </div>
   </body>
 {% endblock %}

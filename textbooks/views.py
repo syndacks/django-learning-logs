@@ -13,7 +13,7 @@ def index(request):
 
 # Show a single textbook by ISBN
 def textbook_detail(request, isbn):
-    textbook = Textbook.objects.get(isbn=isbn)
+    textbook = get_object_or_404(Textbook, isbn=isbn)
     return render(request, 'textbooks/textbook_detail.html', {'textbook': textbook})
 
 
@@ -32,22 +32,19 @@ def new_exercise(request, isbn):
 
         user = User.objects.get(username='dacksmdm')  # TODO: get the currently logged in user
 
-        page = Page.objects.create(
-            page_number=page_number,
-            textbook=textbook
-        )
-
         exercise = Exercise.objects.create(
+            page_number=page_number,
             exercise_number=exercise_number,
-            page=page,
+            textbook=textbook,
+            starter=user
         )
 
         solution_entry = Solution.objects.create(
-            solution=solution,
+            final_answer=solution,
             exercise=exercise,
             created_by=user
         )
 
-        return redirect('views.  textbook_detail', isbn=textbook.isbn)  # TODO: redirect to the created topic page
+        return redirect('textbooks:textbook_detail', isbn=textbook.isbn)  # TODO: redirect to the created topic page
 
     return render(request, 'textbooks/new_solution.html', {'textbook': textbook})
