@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 # Textbook == Board
 class Textbook(models.Model):
     isbn = models.IntegerField(primary_key=True)
-    title = models.CharField()
-    author = models.CharField()
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
     date_published = models.DateField()
     description = models.CharField(max_length=200, blank=True)
     photo_url = models.CharField(max_length=200, blank=True)
@@ -17,7 +17,7 @@ class Textbook(models.Model):
 
 # Exercise == Topic
 class Exercise(models.Model):
-    page_number = IntegerField()
+    page_number = models.IntegerField()
     exercise_number = models.CharField(max_length=4)
     last_updated = models.DateTimeField(auto_now_add=True)
     # Relational

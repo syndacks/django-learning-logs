@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Textbook, Page, Exercise, Solution
+from .models import Textbook, Exercise, Solution
 
 
 # Show all textbooks in the database
