@@ -48,3 +48,10 @@ def new_exercise(request, isbn):
         return redirect('textbooks:textbook_detail', isbn=textbook.isbn)  # TODO: redirect to the created topic page
 
     return render(request, 'textbooks/new_solution.html', {'textbook': textbook})
+
+
+def page_detail(request, isbn, page_number):
+    textbook = get_object_or_404(Textbook, isbn=isbn)
+    exercises = Exercise.objects.filter(page_number=page_number)
+
+    return render(request, 'textbooks/page_detail.html', {'textbook': textbook, 'exercises': exercises, 'page_number': page_number})

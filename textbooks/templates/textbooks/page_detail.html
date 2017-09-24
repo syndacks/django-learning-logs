@@ -22,11 +22,11 @@
 
 
 
+      <h2>Current Page: <span style='color:green'>{{page_number}}</span></h2>
 
       <table class="table">
         <thead class="thead-inverse">
           <tr>
-            <th>Page Number</th>
             <th>Exercise Number</th>
             <th>Starter</th>
             <th>Last Update</th>
@@ -35,9 +35,8 @@
         <tbody>
 
 
-        {% for exercise in textbook.exercises.all|dictsort:'page_number' %}
+        {% for exercise in exercises.all|dictsort:'exercise_number' %}
           <tr>
-            <td>{{ exercise.page_number }}</td>
             <td>{{ exercise.exercise_number }}</td>
             <td>{{ exercise.starter.username }}</td>
             <td>{{ exercise.last_updated }}</td>

@@ -9,5 +9,7 @@ urlpatterns = [
     # ex: /polls/5/
     url(r'^(?P<isbn>[0-9]+)/$', views.textbook_detail, name='textbook_detail'),
 
-    url(r'^(?P<isbn>[0-9]+)/new/$', views.new_exercise, name='new_exercise')
+    url(r'^(?P<isbn>[0-9]+)/new/$', views.new_exercise, name='new_exercise'),
+
+    url(r'^(?P<isbn>[0-9]+)/page/(?P<page_number>[0-9]+)/$', views.page_detail, name='page_detail'),
 ]
