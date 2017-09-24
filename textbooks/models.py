@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Textbook == Board
 class Textbook(models.Model):
-    isbn = models.IntegerField(primary_key=True, unique=True)
+    isbn = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     date_published = models.DateField()
@@ -16,14 +16,14 @@ class Textbook(models.Model):
 
 
 class Page(models.Model):
-    page_number = models.IntegerField(primary_key=True, unique=True)
+    page_number = models.IntegerField()
     # a Textbook takes multiple Pages, but a Page has only one Textbook
     textbook = models.ForeignKey(Textbook, related_name='pages')
 
 
 # Exercise == Topic
 class Exercise(models.Model):
-    exercise_number = models.CharField(max_length=4, primary_key=True)
+    exercise_number = models.CharField(max_length=4)
     last_updated = models.DateTimeField(auto_now_add=True)
     # Relational
     page = models.ForeignKey(Page, related_name='exercises')
@@ -32,7 +32,7 @@ class Exercise(models.Model):
     # solution = models.ManyToOneRel('Solution', related_name='exercises')
 
     # comment out 'starter' for now - eventually an Admin will be able to do this
-    # starter = models.ForeignKey(User, related_name='exercises')
+    # starter = models.ForeignKey(User, related_name='exercises', null=True)
 
 
 # Solution == Post

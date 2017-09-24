@@ -1,7 +1,9 @@
 {% extends "textbooks/base.html" %}
 
 {% block content %}
+
     <div class="container">
+
       <ol class="breadcrumb my-4">
         <li class="breadcrumb-item active">{{textbook.title}} - {{textbook.isbn}}</li>
         <br/>
@@ -13,6 +15,15 @@
           <br/>
           <br/>
       </div>
+
+      <div class="mb-4">
+        <a href="{% url 'textbooks:new_exercise' textbook.pk %}" class="btn btn-primary">New exercise</a>
+      </div>
+
+      <table class="table">
+        <!-- code suppressed for brevity -->
+      </table>
+
 
       <table class="table">
         <thead class="thead-inverse">
@@ -33,6 +44,15 @@
             <td class="align-middle"></td>
             <td></td>
           </tr>
+          {% for exercise in textbook.exercises.all %}
+            <tr>
+              <td>{{ exercise.exercise_number }}</td>
+              <td>{{ exercise.page_number }}</td>
+              <td>0</td>
+              <td>0</td>
+              <td>{{ exercise.last_updated }}</td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

@@ -1,0 +1,40 @@
+{% extends "textbooks/base.html" %}
+
+{% block title %} Start a new Exercise {% endblock %}
+
+{%block content%}
+    <div class="container">
+      <ol class="breadcrumb my-4">
+        <li class="breadcrumb-item active">{{textbook.title}} - {{textbook.isbn}}</li>
+        <br/>
+        <li class="breadcrumb-item active"><em>{{textbook.author}}</em></li>
+      </ol>
+
+      <div class>
+          <img class="book-image" src="{{textbook.photo_url}}">
+          <br/>
+          <br/>
+      </div>
+
+      <h2>New Exercise</h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_subject">Page #</label>
+          <input type="text" class="form-control" id="id_page_number" name="page_number">
+        </div>
+        <div class="form-group">
+          <label for="id_subject">Exercise #</label>
+          <input type="text" class="form-control" id="id_exercise_number" name="exercise_number">
+        </div>
+        <div class="form-group">
+          <label for="id_message">Solution</label>
+          <textarea class="form-control" id="id_solution" name="solution" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Post</button>
+      </form>
+
+</div> <!--End Container -->
+
+  </body>
+{% endblock %}
